@@ -42,7 +42,6 @@ struct Node* CreateTree(struct Node* root, struct Node* r, int data)
 			printf("Ошибка выделения памяти");
 			exit(0);
 		}
-
 		r->left = NULL;
 		r->right = NULL;
 		r->data = data;
@@ -53,7 +52,7 @@ struct Node* CreateTree(struct Node* root, struct Node* r, int data)
 		return r;
 	}
 
-	m = find(r, data);
+	if (r->data == data) { m = 1; }
 	if (m == 0) {
 		if (data > r->data)
 			CreateTree(r, r->left, data);
@@ -62,6 +61,7 @@ struct Node* CreateTree(struct Node* root, struct Node* r, int data)
 	}
 	else {
 		printf("Элемент уже есть\n");
+		m = 0;
 	}
 	return root;
 }
